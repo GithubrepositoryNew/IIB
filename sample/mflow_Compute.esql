@@ -1,0 +1,40 @@
+
+
+CREATE COMPUTE MODULE mflow_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyMessageHeaders();
+		 --CALL CopyEntireMessage();
+		 --SET OutputRoot = InputRoot;
+		 
+		 DECLARE RECORD, get ROW;
+		 DECLARE env REFERENCE TO Environment.Variables;
+		 
+		 DECLARE A CHARACTER '';
+		
+		  
+		  SET OutputRoot.XMLNSC.OUT.DATA[] =SELECT A.QUE_MGR_NM FROM InputRoot.XMLNSC.ErrorRootTag[] AS A WHERE A.TRANS_STAT_CDE = '30';
+		 
+		  
+		  SET env.val = THE(SELECT A.QUE_MGR_NM FROM InputRoot.XMLNSC.ErrorRootTag[] AS A WHERE A.TRANS_STAT_CDE = '30');
+		  
+		  SET RECORD.val[] = SELECT A.QUE_MGR_NM FROM OutputRoot.XMLNSC.ErrorRootTag[] AS A WHERE A.TRANS_STAT_CDE = '30';
+		  DECLARE s CHARACTER 'ss';
+		  
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;
