@@ -9,10 +9,10 @@
       <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="85,115" queueName="SUB" destinationQueueManagerName="IB9QMGR" messageDomainProperty="XMLNSC">
         <translation xmi:type="utility:ConstantString" string="MQ Input"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="477,160" queueName="IN" queueManagerHostname="172.25.26.37" listenerPortNumber="1414" channelName="SYSTEM.DEF.SVRCONN">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="513,190" queueName="IN" queueManagerHostname="172.25.26.37" listenerPortNumber="1414" channelName="SYSTEM.DEF.SVRCONN">
         <translation xmi:type="utility:ConstantString" string="MQ Output"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="263,214" computeExpression="esql://routine/#mflow_Compute.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="298,144" computeExpression="esql://routine/#mflow_Compute.Main">
         <translation xmi:type="utility:ConstantString" string="Compute"/>
       </nodes>
       <nodes xmi:type="ComIbmPassthru.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="247,43">
